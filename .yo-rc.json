@@ -1,0 +1,30 @@
+{
+  "generator-bcdk": {
+    "promptValues": {
+      "modules": {
+        "jenkins": {
+          "path": ".jenkins",
+          "name": "jenkins",
+          "namespace": "ifttgq-tools",
+          "version": "1.0.0",
+          "environments": {
+            "build": {
+              "namespace": "ifttgq-tools"
+            },
+            "dev": {
+              "namespace": "ifttgq-tools"
+            },
+            "prod": {
+              "namespace": "ifttgq-tools"
+            }
+          },
+          "jenkinsJobName": "_jenkins",
+          "github_owner": "parulmishra",
+          "github_repo": "DemoBcdkDotNet",
+          "jenkinsFilePath": ".jenkins/Jenkinsfile",
+          "uuid": "3e7f8be2-9850-4062-8117-41056081603e"
+        }
+      }
+    }
+  }
+}
