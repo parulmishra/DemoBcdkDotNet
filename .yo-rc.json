@@ -23,6 +23,37 @@
           "github_repo": "DemoBcdkDotNet",
           "jenkinsFilePath": ".jenkins/Jenkinsfile",
           "uuid": "3e7f8be2-9850-4062-8117-41056081603e"
+        },
+        "main": {
+          "name": "",
+          "path": ".",
+          "components": {
+            "demobcdkdotnet": {
+              "name": "demobcdkdotnet"
+            }
+          },
+          "version": "1.0.0",
+          "environments": {
+            "build": {
+              "namespace": "ifttgq-tools"
+            },
+            "dev": {
+              "namespace": "ifttgq-dev"
+            },
+            "test": {
+              "namespace": "ifttgq-test"
+            },
+            "prod": {
+              "namespace": "ifttgq-prod"
+            }
+          }
+        },
+        ".": {
+          "jenkinsJobName": "demobcdkdotnet",
+          "github_owner": "parulmishra",
+          "github_repo": "DemoBcdkDotNet",
+          "jenkinsFilePath": "Jenkinsfile",
+          "uuid": "5a30f413-fe4a-4f9f-bc37-61e9af25b6a8"
         }
       }
     }
