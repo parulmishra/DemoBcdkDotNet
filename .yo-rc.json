@@ -47,6 +47,13 @@
               "namespace": "ifttgq-prod"
             }
           }
+        },
+        ".": {
+          "jenkinsJobName": "demobcdkdotnet",
+          "github_owner": "parulmishra",
+          "github_repo": "DemoBcdkDotNet",
+          "jenkinsFilePath": "Jenkinsfile",
+          "uuid": "5a30f413-fe4a-4f9f-bc37-61e9af25b6a8"
         }
       }
     }
