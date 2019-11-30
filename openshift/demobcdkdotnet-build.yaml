@@ -11,8 +11,6 @@ objects:
     apiVersion: v1
     metadata:
       name: "${NAME}"
-      labels:
-        shared: "true"
   - kind: BuildConfig
     apiVersion: v1
     metadata:
@@ -89,19 +87,23 @@ parameters:
     description: >-
       The 'kind' (type) of the source image; typically ImageStreamTag, or
       DockerImage.
-    value: ImageStreamTag
+    required: false
+    value: DockerImage
   - name: SOURCE_IMAGE_NAME
     displayName: Source Image Name
     description: The name of the source image.
-    value: registry.access.redhat.com/dotnet/dotnet-22-rhel7
+    value: "registry.access.redhat.com/dotnet/dotnet-22-rhel7"
+    required: false
   - name: SOURCE_IMAGE_TAG
     displayName: Source Image Tag
     description: The tag of the source image.
-    value: 2.2-2
+    value: "2.2-2"
+    required: false
   - name: DOTNET_STARTUP_PROJECT
     displayName: DotNet Startup Project
     description: The path to the startup project for the .Net application.
     value: DemoBcdkDotNet
+    required: false
   - name: DOTNET_TEST_PROJECTS
     displayName: DotNet Test Project(s)
     description: >-
@@ -110,24 +112,30 @@ parameters:
       for each item.
     value: |-
       DemoBcdkDotNet.Tests
+    required: false
   - name: DOTNET_RM_SRC
     displayName: Remove DotNet source code
     description:
       When set to true, the source code will not be included in the final image.
     value: "true"
+    required: false
   - name: CPU_LIMIT
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     value: "1"
+    required: false
   - name: MEMORY_LIMIT
     displayName: Resources Memory Limit
     description: The resources Memory limit (in Mi, Gi, etc) for this build.
     value: 6Gi
+    required: false
   - name: CPU_REQUEST
     displayName: Resources CPU Request
     description: The resources CPU request (in cores) for this build.
     value: "1"
+    required: false
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
     value: 4Gi
+    required: false
