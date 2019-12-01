@@ -32,8 +32,8 @@ objects:
         type: Source
         sourceStrategy:
           from:
-            kind: "${SOURCE_IMAGE_KIND}"
-            name: "${SOURCE_IMAGE_NAME}:${SOURCE_IMAGE_TAG}"
+            kind: ImageStreamTag
+            name: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
           env:
             - name: DOTNET_STARTUP_PROJECT
               value: "${DOTNET_STARTUP_PROJECT}"
@@ -44,7 +44,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "${NAME}:${VERSION}"
+          name: ${NAME}:${VERSION}
       resources:
         requests:
           cpu: "${CPU_REQUEST}"
