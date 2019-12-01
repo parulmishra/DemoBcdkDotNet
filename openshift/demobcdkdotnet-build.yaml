@@ -6,6 +6,30 @@ labels:
 metadata:
   name: "${NAME}-build-template"
 objects:
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      annotations: null
+      creationTimestamp: null
+      labels:
+        shared: "true"
+      name: dotnet-22-rhel7
+    spec:
+      lookupPolicy:
+        local: false
+      tags:
+      - annotations:
+          openshift.io/imported-from: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
+        from:
+          kind: DockerImage
+          name: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
+        generation: null
+        importPolicy: {}
+        name: "1"
+        referencePolicy:
+          type: "Local"
+    status:
+      dockerImageRepository: ""
   - kind: ImageStream
     apiVersion: v1
     metadata:
@@ -32,8 +56,8 @@ objects:
         type: Source
         sourceStrategy:
           from:
-            kind: DockerImage
-            name: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
+            kind: ImageStreamTag
+            name: dotnet-22-rhel7:1
           env:
             - name: DOTNET_STARTUP_PROJECT
               value: "${DOTNET_STARTUP_PROJECT}"
