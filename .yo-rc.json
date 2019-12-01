@@ -25,7 +25,7 @@
           "uuid": "3e7f8be2-9850-4062-8117-41056081603e"
         },
         "main": {
-          "name": "",
+          "name": "demobcdkdotnet",
           "path": ".",
           "components": {
             "demobcdkdotnet": {
