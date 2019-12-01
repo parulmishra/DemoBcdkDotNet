@@ -75,6 +75,7 @@ objects:
               - "${NAME}"
             from:
               kind: ImageStreamTag
+              namespace: "${IMAGE_NAMESPACE}"
               name: "${NAME}:${VERSION}"
       replicas: 1
       selector:
@@ -147,6 +148,13 @@ parameters:
       Staging, Production
     required: true
     value: Development
+  - name: IMAGE_NAMESPACE
+    displayName: Image Namespace
+    description: >-
+      The namespace of the OpenShift project containing the imagestream for the
+      application.
+    required: false
+    value: ifttgq-tools
   - name: CPU_LIMIT
     displayName: CPU Limit
     description: Maximum amount of CPU the container can use.
