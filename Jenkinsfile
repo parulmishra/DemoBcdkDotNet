@@ -37,11 +37,9 @@ pipeline {
                 expression { return env.CHANGE_TARGET == 'master';}
                 beforeInput true
             }
-            timeout(time: 10, unit: 'MINUTES') {
-                input {
-                    message "Should we continue with deployment to TEST?"
-                    ok "Yes!"
-                }
+            input {
+                message "Should we continue with deployment to TEST?"
+                ok "Yes!"
             }
             steps {
                 echo "Deploying ..."
@@ -54,11 +52,9 @@ pipeline {
                 expression { return env.CHANGE_TARGET == 'master';}
                 beforeInput true
             }
-            timeout(time: 10, unit: 'MINUTES') {
-                input {
-                    message "Should we continue with deployment to TEST?"
-                    ok "Yes!"
-                }
+            input {
+                message "Should we continue with deployment to TEST?"
+                ok "Yes!"
             }
             steps {
                 echo "Deploying ..."
