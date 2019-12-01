@@ -40,7 +40,6 @@ objects:
         weight: 100
       port:
         targetPort: 8080-tcp
-      wildcardPolicy: None
   - kind: DeploymentConfig
     apiVersion: v1
     metadata:
