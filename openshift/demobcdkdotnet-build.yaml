@@ -32,7 +32,7 @@ objects:
         type: Source
         sourceStrategy:
           from:
-            kind: ImageStreamTag
+            kind: DockerImage
             name: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
           env:
             - name: DOTNET_STARTUP_PROJECT
