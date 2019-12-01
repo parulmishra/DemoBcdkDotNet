@@ -44,6 +44,7 @@ objects:
       name: "${NAME}${SUFFIX}"
     spec:
       host: "${HOST}"
+      path: ""
       tls:
         insecureEdgeTerminationPolicy: Redirect
         termination: edge
@@ -53,6 +54,7 @@ objects:
         weight: 100
       port:
         targetPort: 8080-tcp
+      wildcardPolicy: None
   - kind: DeploymentConfig
     apiVersion: v1
     metadata:
