@@ -108,23 +108,6 @@ parameters:
     displayName: Name Suffix
     name: SUFFIX
     required: true
-  - name: SOURCE_IMAGE_KIND
-    displayName: Source Image Kind
-    description: >-
-      The 'kind' (type) of the source image; typically ImageStreamTag, or
-      DockerImage.
-    required: false
-    value: ImageStreamTag
-  - name: SOURCE_IMAGE_NAME
-    displayName: Source Image Name
-    description: The name of the source image.
-    value: "registry.access.redhat.com/dotnet/dotnet-22-rhel7"
-    required: false
-  - name: SOURCE_IMAGE_TAG
-    displayName: Source Image Tag
-    description: The tag of the source image.
-    value: "2.2-2"
-    required: false
   - name: DOTNET_STARTUP_PROJECT
     displayName: DotNet Startup Project
     description: The path to the startup project for the .Net application.
