@@ -62,7 +62,7 @@ objects:
     spec:
       strategy:
         recreateParams:
-          timeoutSeconds: 180
+          timeoutSeconds: 2000
         resources: {}
         type: Recreate
         activeDeadlineSeconds: 21600
