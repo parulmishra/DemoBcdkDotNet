@@ -15,8 +15,8 @@ module.exports = (settings)=>{
       'param':{
         'NAME': phases[phase].name,
         'SUFFIX': phases[phase].suffix,
-        'VERSION': phases[phase].tag,
-        'HOST': `${phases[phase].name}${phases[phase].suffix}-${phases[phase].namespace}.ocp.bitbox.ca`,
+        'VERSION': phases[phase].version,
+        'HOST': `${phases[phase].name}${phases[phase].suffix}-${phases[phase].namespace}.pathfinder.gov.bc.ca`,
         'ASPNETCORE_ENVIRONMENT': phases[phase].aspdotnetenvironment
       }
   }))

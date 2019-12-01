@@ -1,27 +1,51 @@
 kind: Template
-apiVersion: v1
+apiVersion: template.openshift.io/v1
 labels:
   app: "${NAME}"
   tier: frontend
 metadata:
   name: "${NAME}-build-template"
-  creationTimestamp: null
 objects:
+  - apiVersion: image.openshift.io/v1
+    kind: ImageStream
+    metadata:
+      annotations: null
+      creationTimestamp: null
+      labels:
+        shared: "true"
+      name: dotnet-22-rhel7
+    spec:
+      lookupPolicy:
+        local: false
+      tags:
+      - annotations:
+          openshift.io/imported-from: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
+        from:
+          kind: DockerImage
+          name: registry.access.redhat.com/dotnet/dotnet-22-rhel7:2.2-2
+        generation: null
+        importPolicy: {}
+        name: "1"
+        referencePolicy:
+          type: "Local"
+    status:
+      dockerImageRepository: ""
   - kind: ImageStream
     apiVersion: v1
     metadata:
       name: "${NAME}"
-      labels:
-        shared: "true"
   - kind: BuildConfig
     apiVersion: v1
     metadata:
       name: "${NAME}${SUFFIX}"
     spec:
+      completionDeadlineSeconds: 14400
+      failedBuildsHistoryLimit: 3
+      nodeSelector: null
       triggers:
         - type: ImageChange
         - type: ConfigChange
-      runPolicy: SerialLatestOnly
+      runPolicy: Serial
       source:
         type: Git
         git:
@@ -32,8 +56,8 @@ objects:
         type: Source
         sourceStrategy:
           from:
-            kind: "${SOURCE_IMAGE_KIND}"
-            name: "${SOURCE_IMAGE_NAME}:${SOURCE_IMAGE_TAG}"
+            kind: ImageStreamTag
+            name: dotnet-22-rhel7:1
           env:
             - name: DOTNET_STARTUP_PROJECT
               value: "${DOTNET_STARTUP_PROJECT}"
@@ -44,7 +68,7 @@ objects:
       output:
         to:
           kind: ImageStreamTag
-          name: "${NAME}:${VERSION}"
+          name: ${NAME}:${VERSION}
       resources:
         requests:
           cpu: "${CPU_REQUEST}"
@@ -84,24 +108,11 @@ parameters:
     displayName: Name Suffix
     name: SUFFIX
     required: true
-  - name: SOURCE_IMAGE_KIND
-    displayName: Source Image Kind
-    description: >-
-      The 'kind' (type) of the source image; typically ImageStreamTag, or
-      DockerImage.
-    value: DockerImage
-  - name: SOURCE_IMAGE_NAME
-    displayName: Source Image Name
-    description: The name of the source image.
-    value: registry.access.redhat.com/dotnet/dotnet-22-rhel7
-  - name: SOURCE_IMAGE_TAG
-    displayName: Source Image Tag
-    description: The tag of the source image.
-    value: 2.2-2
   - name: DOTNET_STARTUP_PROJECT
     displayName: DotNet Startup Project
     description: The path to the startup project for the .Net application.
-    value: DemoBcdkDotNet
+    value: DemoBcdkDotNet/DemoBcdkDotNet/DemoBcdkDotNet.csproj
+    required: false
   - name: DOTNET_TEST_PROJECTS
     displayName: DotNet Test Project(s)
     description: >-
@@ -109,25 +120,31 @@ parameters:
       files or folders containing a single project file. dotnet test is invoked
       for each item.
     value: |-
-      DemoBcdkDotNet.Tests
+      DemoBcdkDotNet.Test/DemoBcdkDotNet.Test.csproj
+    required: false
   - name: DOTNET_RM_SRC
     displayName: Remove DotNet source code
     description:
       When set to true, the source code will not be included in the final image.
     value: "true"
+    required: false
   - name: CPU_LIMIT
     displayName: Resources CPU Limit
     description: The resources CPU limit (in cores) for this build.
     value: "1"
+    required: false
   - name: MEMORY_LIMIT
     displayName: Resources Memory Limit
     description: The resources Memory limit (in Mi, Gi, etc) for this build.
     value: 6Gi
+    required: false
   - name: CPU_REQUEST
     displayName: Resources CPU Request
     description: The resources CPU request (in cores) for this build.
     value: "1"
+    required: false
   - name: MEMORY_REQUEST
     displayName: Resources Memory Request
     description: The resources Memory request (in Mi, Gi, etc) for this build.
     value: 4Gi
+    required: false
