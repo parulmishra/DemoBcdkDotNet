@@ -128,7 +128,7 @@ parameters:
   - name: DOTNET_STARTUP_PROJECT
     displayName: DotNet Startup Project
     description: The path to the startup project for the .Net application.
-    value: DemoBcdkDotNet
+    value: DemoBcdkDotNet/DemoBcdkDotNet/DemoBcdkDotNet.csproj
     required: false
   - name: DOTNET_TEST_PROJECTS
     displayName: DotNet Test Project(s)
@@ -137,7 +137,7 @@ parameters:
       files or folders containing a single project file. dotnet test is invoked
       for each item.
     value: |-
-      DemoBcdkDotNet.Tests
+      DemoBcdkDotNet.Test/DemoBcdkDotNet.Test.csproj
     required: false
   - name: DOTNET_RM_SRC
     displayName: Remove DotNet source code
